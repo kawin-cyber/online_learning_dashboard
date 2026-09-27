@@ -1,0 +1,229 @@
+/* ============================================================
+   Vexsus Dashboard Design System
+   Exact match to target design mock
+   ============================================================ */
+
+:root {
+  --bg: #eaf2ef;
+  --card-bg: #ffffff;
+  --sidebar-bg: #043e38;
+  --sidebar-active: #0c5950;
+  --sidebar-hover: #074b44;
+  --text-main: #0c2621;
+  --text-muted: #5e7a75;
+  --border-color: #d7e4e0;
+  --border-light: #e8f0ec;
+  
+  --primary-teal: #054e46;
+  --accent-mint: #0d9488;
+  --accent-light-mint: #d1fae5;
+  --accent-purple: #7c3aed;
+  --accent-orange: #f59e0b;
+  --accent-blue: #0284c7;
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --shadow-sm: 0 1px 3px rgba(12, 38, 33, 0.04);
+  --shadow-card: 0 4px 14px rgba(12, 38, 33, 0.05);
+  --shadow-hover: 0 8px 24px rgba(12, 38, 33, 0.09);
+}
+
+[data-theme="dark"] {
+  --bg: #0a1816;
+  --card-bg: #112421;
+  --text-main: #e2f0ed;
+  --text-muted: #8aa39e;
+  --border-color: #1a3834;
+  --border-light: #16302c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* App Layout */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-wrapper {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  padding: 24px 28px 48px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Dashboard Grid Layout (2 Columns: Left 70%, Right 30%) */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 310px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Common Card */
+.vx-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vx-card.hoverable:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Header & Typography */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.view-all-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0b6b5f;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s;
+}
+
+.view-all-link:hover {
+  color: #054e46;
+  text-decoration: underline;
+}
+
+/* Utility Badges & Buttons */
+.vx-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.vx-badge-teal {
+  background: rgba(13, 148, 136, 0.15);
+  color: #0d9488;
+}
+
+.vx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.vx-btn-white {
+  background: #ffffff;
+  color: #043e38;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.vx-btn-white:hover {
+  background: #f8faf9;
+  transform: translateY(-1px);
+}
+
+.vx-btn-teal {
+  background: var(--primary-teal);
+  color: #ffffff;
+}
+
+.vx-btn-teal:hover {
+  background: #075a51;
+}
+
+/* Progress bar */
+.vx-progress-track {
+  height: 6px;
+  background: #e2ede9;
+  border-radius: 999px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.vx-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* Icons SVG styling */
+.icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px 14px 32px;
+  }
+}
