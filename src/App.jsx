@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar.jsx';
 import Navbar from './components/Navbar.jsx';
 import Login from './pages/Login.jsx';
@@ -65,9 +65,9 @@ export default function App() {
                         <div className="vx-card" style={{ padding: 32, textAlign: 'center' }}>
                           <h2>Page not found</h2>
                           <p style={{ margin: '8px 0 16px', color: 'var(--text-muted)' }}>The requested page could not be located.</p>
-                          <a href="/dashboard" className="vx-btn vx-btn-teal">
+                          <Link to="/dashboard" className="vx-btn vx-btn-teal">
                             Go to Dashboard →
-                          </a>
+                          </Link>
                         </div>
                       }
                     />

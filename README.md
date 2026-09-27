@@ -8,9 +8,9 @@ A modern, responsive **online learning dashboard** built with React and Vite. It
 
 For a live website, click the link below:
 
-**[Click here to view the live site](https://your-live-site-link-here.com)**
+**[Click here to view the live site](https://kawin-cyber.github.io/online_learning_dashboard/)**
 
-> ⚠️ *Placeholder link — replace `https://your-live-site-link-here.com` with the actual deployed URL.*
+> Note: the link activates once GitHub Pages is enabled for the repo (see [Deployment](#deployment-github-pages)).
 
 ## Screenshots
 
@@ -23,7 +23,7 @@ For a live website, click the link below:
 | Layer      | Technology                                        |
 | ---------- | ------------------------------------------------- |
 | UI         | React 19 (`react`, `react-dom`)                   |
-| Routing    | React Router DOM v7 (`BrowserRouter`)             |
+| Routing    | React Router DOM v7 (`HashRouter`)             |
 | Build tool | Vite 8 (`@vitejs/plugin-react`)                   |
 | Linting    | Oxlint                                            |
 | State      | React Context API (`AppContext`) + `localStorage` |
@@ -101,7 +101,7 @@ online dashboard/
 │   ├── favicon.svg
 │   └── icons.svg
 └── src/
-    ├── main.jsx                # Root render: StrictMode > BrowserRouter > AppProvider > App
+    ├── main.jsx                # Root render: StrictMode > HashRouter > AppProvider > App
     ├── App.jsx                 # Route definitions + Protected guard + app shell
     ├── index.css               # Global styles, CSS variables, theming
     ├── assets/                 # Images & static assets
@@ -136,6 +136,8 @@ online dashboard/
 | `/settings`          | Settings     | Protected         |
 | `*`                  | 404          | "Page not found"  |
 
+> With `HashRouter`, live URLs use a hash segment — e.g. `https://kawin-cyber.github.io/online_learning_dashboard/#/dashboard`.
+
 ## State & Persistence
 
 Global state lives in `src/context/AppContext.jsx` and is persisted to `localStorage` via helpers in `src/utils/localStorage.js`. Keys include:
@@ -149,6 +151,21 @@ Global state lives in `src/context/AppContext.jsx` and is persisted to `localSto
 - `profileData`, `appSettings` — profile & settings
 
 To reset the demo data, clear the site's `localStorage` in your browser dev tools.
+
+## Deployment (GitHub Pages)
+
+The repo includes a GitHub Actions workflow — `.github/workflows/deploy.yml` — that runs `npm ci` + `npm run build` and deploys `dist/` to GitHub Pages **automatically on every push to `main`**. The repo intentionally does **not** contain `node_modules/` or `dist/`: GitHub Actions builds them in the cloud.
+
+**One-time setup:**
+
+1. Push this repo to GitHub (already connected: `kawin-cyber/online_learning_dashboard`).
+2. On GitHub: **Settings → Pages → Build and deployment → Source** → select **GitHub Actions**.
+3. Push to `main` (or run the workflow manually from the **Actions** tab).
+
+**What makes it Pages-ready:**
+
+- `vite.config.js` sets `base: './'` so assets resolve under the project sub-path.
+- The app uses `HashRouter`, so deep links/refreshes work without any server-side rewrite rules (no 404 tricks needed).
 
 ## Scripts Reference
 
